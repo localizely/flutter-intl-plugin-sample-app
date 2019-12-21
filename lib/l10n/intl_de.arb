@@ -1,0 +1,12 @@
+{
+  "pageHomeListTitle": "Einige lokalisierte Zeichenfolgen:",
+  "pageHomeSamplePlaceholder": "Willkommen {name}",
+  "pageHomeSamplePlaceholdersOrdered": "Mein Name ist {lastName}, {firstName} {lastName}",
+  "@pageHomeSamplePlaceholdersOrdered": {
+    "placeholders": {
+      "firstName": {},
+      "lastName": {}
+    }
+  },
+  "pageHomeSamplePlural": "{howMany, plural, one{Sie haben 1 Nachricht} other{Sie haben {howMany} Nachrichten}}"
+}
