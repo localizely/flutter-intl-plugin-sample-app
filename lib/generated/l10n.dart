@@ -87,7 +87,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   bool _isSupported(Locale locale) {
     if (locale != null) {
       for (Locale supportedLocale in supportedLocales) {
-        if (supportedLocale.languageCode != locale.languageCode) {
+        if (supportedLocale.languageCode == locale.languageCode) {
           return true;
         }
       }
