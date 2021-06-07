@@ -9,3 +9,5 @@ This Demo app shows how to localize your Flutter apps with any of these:
 All of these use the same configuration (`flutter_intl`) inside `pubspec.yaml` file in order to generate localization files.
 
 ![demo](./demo.gif)
+
+For [Over-the-air translation updates](https://localizely.com/flutter-over-the-air/) check out a dedicated [Flutter OTA Sample app](https://github.com/localizely/flutter-ota-sample-app/).
