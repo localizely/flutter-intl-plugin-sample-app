@@ -6,13 +6,13 @@ import 'package:sample/generated/l10n.dart';
 import 'package:sample/main.dart';
 
 void main() {
-  Widget makeTestableWidget({ Widget child }) {
+  Widget makeTestableWidget({required Widget child}) {
     return MaterialApp(
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         S.delegate
-      ], 
+      ],
       supportedLocales: S.delegate.supportedLocales,
       locale: Locale('en'),
       home: child,

@@ -8,27 +8,49 @@ import 'intl/messages_all.dart';
 // Made by Localizely
 // **************************************************************************
 
+// ignore_for_file: non_constant_identifier_names, lines_longer_than_80_chars
+// ignore_for_file: join_return_with_assignment, prefer_final_in_for_each
+// ignore_for_file: avoid_redundant_argument_values, avoid_escaping_inner_quotes
+
 class S {
-  S(this.localeName);
-  
-  static const AppLocalizationDelegate delegate =
-    AppLocalizationDelegate();
+  S();
+
+  static S? _current;
+
+  static S get current {
+    assert(_current != null,
+        'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.');
+    return _current!;
+  }
+
+  static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final String name = locale.countryCode.isEmpty ? locale.languageCode : locale.toString();
-    final String localeName = Intl.canonicalizedLocale(name);
+    final name = (locale.countryCode?.isEmpty ?? false)
+        ? locale.languageCode
+        : locale.toString();
+    final localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
-      return S(localeName);
+      final instance = S();
+      S._current = instance;
+
+      return instance;
     });
-  } 
+  }
 
   static S of(BuildContext context) {
+    final instance = S.maybeOf(context);
+    assert(instance != null,
+        'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?');
+    return instance!;
+  }
+
+  static S? maybeOf(BuildContext context) {
     return Localizations.of<S>(context, S);
   }
 
-  final String localeName;
-
+  /// `Some localized strings:`
   String get pageHomeListTitle {
     return Intl.message(
       'Some localized strings:',
@@ -38,7 +60,8 @@ class S {
     );
   }
 
-  String pageHomeSamplePlaceholder(dynamic name) {
+  /// `Welcome {name}`
+  String pageHomeSamplePlaceholder(Object name) {
     return Intl.message(
       'Welcome $name',
       name: 'pageHomeSamplePlaceholder',
@@ -47,7 +70,8 @@ class S {
     );
   }
 
-  String pageHomeSamplePlaceholdersOrdered(dynamic firstName, dynamic lastName) {
+  /// `My name is {lastName}, {firstName} {lastName}`
+  String pageHomeSamplePlaceholdersOrdered(Object firstName, Object lastName) {
     return Intl.message(
       'My name is $lastName, $firstName $lastName',
       name: 'pageHomeSamplePlaceholdersOrdered',
@@ -56,7 +80,8 @@ class S {
     );
   }
 
-  String pageHomeSamplePlural(dynamic howMany) {
+  /// `{howMany, plural, one{You have 1 message} other{You have {howMany} messages}}`
+  String pageHomeSamplePlural(num howMany) {
     return Intl.plural(
       howMany,
       one: 'You have 1 message',
@@ -73,7 +98,8 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
 
   List<Locale> get supportedLocales {
     return const <Locale>[
-      Locale('de', ''), Locale('en', ''),
+      Locale.fromSubtags(languageCode: 'en'),
+      Locale.fromSubtags(languageCode: 'de'),
     ];
   }
 
@@ -85,11 +111,9 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   bool shouldReload(AppLocalizationDelegate old) => false;
 
   bool _isSupported(Locale locale) {
-    if (locale != null) {
-      for (Locale supportedLocale in supportedLocales) {
-        if (supportedLocale.languageCode == locale.languageCode) {
-          return true;
-        }
+    for (var supportedLocale in supportedLocales) {
+      if (supportedLocale.languageCode == locale.languageCode) {
+        return true;
       }
     }
     return false;

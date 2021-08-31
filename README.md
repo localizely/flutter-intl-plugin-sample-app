@@ -1,4 +1,4 @@
-##### Flutter app localization demo 
+### Flutter app localization demo
 
 This Demo app shows how to localize your Flutter apps with any of these:
 
