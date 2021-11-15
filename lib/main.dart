@@ -2,31 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'generated/l10n.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
-class MyApp extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() => _MyAppState();
-}
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
 
-class _MyAppState extends State<MyApp> {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    var matApp = new MaterialApp(
-      localizationsDelegates: [
+    return MaterialApp(
+      localizationsDelegates: const [
         S.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
       ],
       supportedLocales: S.delegate.supportedLocales,
-      home: MyHomePage(),
+      home: const MyHomePage(),
     );
-    return matApp;
   }
 }
 
 class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() => _MyHomePageState();
 }
@@ -45,18 +42,18 @@ class _MyHomePageState extends State<MyHomePage> {
               leading: ElevatedButton(
                 onPressed: () {
                   setState(() {
-                    S.load(Locale('en', 'US'));
+                    S.load(const Locale('en'));
                   });
                 },
-                child: Text('ENGLISH'),
+                child: const Text('ENGLISH'),
               ),
               trailing: ElevatedButton(
                 onPressed: () {
                   setState(() {
-                    S.load(Locale('de', 'DE'));
+                    S.load(const Locale('de'));
                   });
                 },
-                child: Text('GERMAN'),
+                child: const Text('GERMAN'),
               ),
             ),
           ),
@@ -64,11 +61,35 @@ class _MyHomePageState extends State<MyHomePage> {
               flex: 1,
               child: Column(
                 children: [
-                  Text(S.of(context).pageHomeListTitle, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-                  Text(""),
-                  Text(S.of(context).pageHomeSamplePlaceholder("John"), style: TextStyle(fontSize: 20)),
-                  Text(S.of(context).pageHomeSamplePlaceholdersOrdered("John", "Doe"), style: TextStyle(fontSize: 20)),
-                  Text(S.of(context).pageHomeSamplePlural(2), style: TextStyle(fontSize: 20)),
+                  Text(
+                    S.of(context).pageHomeListTitle,
+                    style: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  const Text(""),
+                  Text(
+                    S.of(context).pageHomeSamplePlaceholder('John'),
+                    style: const TextStyle(fontSize: 20),
+                  ),
+                  Text(
+                    S
+                        .of(context)
+                        .pageHomeSamplePlaceholdersOrdered('John', 'Doe'),
+                    style: const TextStyle(fontSize: 20),
+                  ),
+                  Text(
+                    S.of(context).pageHomeSamplePlural(2),
+                    style: const TextStyle(fontSize: 20),
+                  ),
+                  Text(
+                    S.of(context).pageHomeSampleTotalAmount(2500.0),
+                    style: const TextStyle(fontSize: 20),
+                  ),
+                  Text(
+                    S.of(context).pageHomeSampleCurrentDateTime(
+                        DateTime.now(), DateTime.now()),
+                    style: const TextStyle(fontSize: 20),
+                  ),
                 ],
                 crossAxisAlignment: CrossAxisAlignment.start,
               ))

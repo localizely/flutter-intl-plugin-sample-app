@@ -8,6 +8,7 @@
 // ignore_for_file:prefer_single_quotes,comment_references, directives_ordering
 // ignore_for_file:annotate_overrides,prefer_generic_function_type_aliases
 // ignore_for_file:unused_import, file_names, avoid_escaping_inner_quotes
+// ignore_for_file:unnecessary_string_interpolations, unnecessary_string_escapes
 
 import 'package:intl/intl.dart';
 import 'package:intl/message_lookup_by_library.dart';
@@ -19,20 +20,26 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'de';
 
-  static String m0(name) => "Willkommen ${name}";
+  static String m0(date, time) => "Datum: ${date} Zeit: ${time}";
 
-  static String m1(firstName, lastName) =>
+  static String m1(name) => "Willkommen ${name}";
+
+  static String m2(firstName, lastName) =>
       "Mein Name ist ${lastName}, ${firstName} ${lastName}";
 
-  static String m2(howMany) =>
+  static String m3(howMany) =>
       "${Intl.plural(howMany, one: 'Sie haben 1 Nachricht', other: 'Sie haben ${howMany} Nachrichten')}";
+
+  static String m4(total) => "Gesamt: ${total}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "pageHomeListTitle": MessageLookupByLibrary.simpleMessage(
             "Einige lokalisierte Zeichenfolgen:"),
-        "pageHomeSamplePlaceholder": m0,
-        "pageHomeSamplePlaceholdersOrdered": m1,
-        "pageHomeSamplePlural": m2
+        "pageHomeSampleCurrentDateTime": m0,
+        "pageHomeSamplePlaceholder": m1,
+        "pageHomeSamplePlaceholdersOrdered": m2,
+        "pageHomeSamplePlural": m3,
+        "pageHomeSampleTotalAmount": m4
       };
 }

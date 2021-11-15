@@ -8,13 +8,13 @@ import 'package:sample/main.dart';
 void main() {
   Widget makeTestableWidget({required Widget child}) {
     return MaterialApp(
-      localizationsDelegates: [
+      localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         S.delegate
       ],
       supportedLocales: S.delegate.supportedLocales,
-      locale: Locale('en'),
+      locale: const Locale('en'),
       home: child,
     );
   }
@@ -25,7 +25,7 @@ void main() {
   testWidgets('MyWidget has a title and message', (WidgetTester tester) async {
     // Create the widget by telling the tester to build it.
     // await tester.pumpWidget(MyWidget(title: 'T', message: 'M'));
-    await tester.pumpWidget(makeTestableWidget(child: MyHomePage()));
+    await tester.pumpWidget(makeTestableWidget(child: const MyHomePage()));
     await tester.pump();
 
     // Create the Finders.

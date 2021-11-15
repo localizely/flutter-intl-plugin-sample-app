@@ -1,4 +1,5 @@
 {
+  "@@locale": "de",
   "pageHomeListTitle": "Einige lokalisierte Zeichenfolgen:",
   "pageHomeSamplePlaceholder": "Willkommen {name}",
   "pageHomeSamplePlaceholdersOrdered": "Mein Name ist {lastName}, {firstName} {lastName}",
@@ -8,5 +9,38 @@
       "lastName": {}
     }
   },
-  "pageHomeSamplePlural": "{howMany, plural, one{Sie haben 1 Nachricht} other{Sie haben {howMany} Nachrichten}}"
+  "pageHomeSamplePlural": "{howMany, plural, one{Sie haben 1 Nachricht} other{Sie haben {howMany} Nachrichten}}",
+  "@pageHomeSamplePlural": {
+    "placeholders": {
+      "howMany": {
+        "type": "int"
+      }
+    }
+  },
+  "pageHomeSampleTotalAmount": "Gesamt: {total}",
+  "@pageHomeSampleTotalAmount": {
+    "placeholders": {
+      "total": {
+        "type": "double",
+        "format": "currency",
+        "optionalParameters": {
+          "symbol": "€",
+          "decimalDigits": 2
+        }
+      }
+    }
+  },
+  "pageHomeSampleCurrentDateTime": "Datum: {date} Zeit: {time}",
+  "@pageHomeSampleCurrentDateTime": {
+    "placeholders": {
+      "date": {
+        "type": "DateTime",
+        "format": "yMd"
+      },
+      "time": {
+        "type": "DateTime",
+        "format": "Hm"
+      }
+    }
+  }
 }

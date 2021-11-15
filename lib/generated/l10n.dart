@@ -81,7 +81,7 @@ class S {
   }
 
   /// `{howMany, plural, one{You have 1 message} other{You have {howMany} messages}}`
-  String pageHomeSamplePlural(num howMany) {
+  String pageHomeSamplePlural(int howMany) {
     return Intl.plural(
       howMany,
       one: 'You have 1 message',
@@ -89,6 +89,36 @@ class S {
       name: 'pageHomeSamplePlural',
       desc: '',
       args: [howMany],
+    );
+  }
+
+  /// `Total: {total}`
+  String pageHomeSampleTotalAmount(double total) {
+    final NumberFormat totalNumberFormat = NumberFormat.currency(
+        locale: Intl.getCurrentLocale(), symbol: '€', decimalDigits: 2);
+    final String totalString = totalNumberFormat.format(total);
+
+    return Intl.message(
+      'Total: $totalString',
+      name: 'pageHomeSampleTotalAmount',
+      desc: '',
+      args: [totalString],
+    );
+  }
+
+  /// `Date: {date} Time: {time}`
+  String pageHomeSampleCurrentDateTime(DateTime date, DateTime time) {
+    final DateFormat dateDateFormat = DateFormat.yMd(Intl.getCurrentLocale());
+    final String dateString = dateDateFormat.format(date);
+
+    final DateFormat timeDateFormat = DateFormat.Hm(Intl.getCurrentLocale());
+    final String timeString = timeDateFormat.format(time);
+
+    return Intl.message(
+      'Date: $dateString Time: $timeString',
+      name: 'pageHomeSampleCurrentDateTime',
+      desc: '',
+      args: [dateString, timeString],
     );
   }
 }
