@@ -25,7 +25,7 @@ class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => _MyHomePageState();
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -60,6 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Expanded(
               flex: 1,
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     S.of(context).pageHomeListTitle,
@@ -91,7 +92,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     style: const TextStyle(fontSize: 20),
                   ),
                 ],
-                crossAxisAlignment: CrossAxisAlignment.start,
               ))
         ],
       ),

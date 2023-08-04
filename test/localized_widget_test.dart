@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:sample/generated/l10n.dart';
-import 'package:sample/main.dart';
+import 'package:flutter_intl_plugin_sample_app/generated/l10n.dart';
+import 'package:flutter_intl_plugin_sample_app/main.dart';
 
 void main() {
   Widget makeTestableWidget({required Widget child}) {
