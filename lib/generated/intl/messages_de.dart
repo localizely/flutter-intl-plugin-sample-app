@@ -34,12 +34,13 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "pageHomeListTitle": MessageLookupByLibrary.simpleMessage(
-            "Einige lokalisierte Zeichenfolgen:"),
-        "pageHomeSampleCurrentDateTime": m0,
-        "pageHomeSamplePlaceholder": m1,
-        "pageHomeSamplePlaceholdersOrdered": m2,
-        "pageHomeSamplePlural": m3,
-        "pageHomeSampleTotalAmount": m4
-      };
+    "pageHomeListTitle": MessageLookupByLibrary.simpleMessage(
+      "Einige lokalisierte Zeichenfolgen:",
+    ),
+    "pageHomeSampleCurrentDateTime": m0,
+    "pageHomeSamplePlaceholder": m1,
+    "pageHomeSamplePlaceholdersOrdered": m2,
+    "pageHomeSamplePlural": m3,
+    "pageHomeSampleTotalAmount": m4,
+  };
 }

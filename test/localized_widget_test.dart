@@ -10,7 +10,7 @@ void main() {
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
-        S.delegate
+        S.delegate,
       ],
       supportedLocales: S.delegate.supportedLocales,
       locale: const Locale('en'),
